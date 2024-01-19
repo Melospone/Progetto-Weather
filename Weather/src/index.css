@@ -1,22 +1,30 @@
 .navbar {
-    background-color: rgba(233, 232, 234, 0.39) !important;
+    background-color: rgba(233, 232, 234, 0.381) !important;
     border-radius: 40px !important;
     border: 1px solid #0DCAF0 !important;
 }
 
 .search {
-    background-color: rgba(233, 232, 234, 0.39) !important;
+    background-color: rgba(255, 255, 255, 0.436) !important;
     border-radius: 40px !important;
     border: 1px solid #0DCAF0 !important;
 }
 
 .bodyCard {
-    background-color: rgba(255, 255, 255, 0.918) !important;
+    background-color: rgba(255, 255, 255, 0.127) !important;
     border-radius: 40px 40px 0 0 !important;
     border: 1px solid #00d5ff5a !important;
 }
 
 .custom-input:focus {
-  border-color: yellow;
-  box-shadow: 0 0 0 0.2rem rgba(255, 193, 7, 0.25);
-}
+  border-color: rgb(245, 245, 116);
+  box-shadow: 0 0 0 0.2rem rgba(246, 217, 130, 0.25);
+  
+}  body {
+    background-image: url('src/assets/meteo.avif');
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 100vh; 
+    margin: 0; 
+    padding: 0;
+  }
