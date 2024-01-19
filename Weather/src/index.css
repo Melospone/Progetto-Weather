@@ -1,5 +1,5 @@
 .navbar {
-    background-color: rgba(233, 232, 234, 0.381) !important;
+    background-color: rgba(233, 232, 234, 0.509) !important;
     border-radius: 40px !important;
     border: 1px solid #0DCAF0 !important;
 }
@@ -18,7 +18,7 @@
 
 .custom-input:focus {
   border-color: rgb(245, 245, 116);
-  box-shadow: 0 0 0 0.2rem rgba(246, 217, 130, 0.25);
+  box-shadow: 0 0 0 0.2rem rgba(252, 255, 45, 0.25);
   
 }  body {
     background-image: url('src/assets/meteo.avif');

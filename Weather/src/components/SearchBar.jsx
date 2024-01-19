@@ -30,7 +30,6 @@ const BarraRicerca = ({ city, setCity, handleSearch }) => {
             placeholder="Inserisci il nome della città"
             value={city}
             onChange={handleInputChange}
-            onKeyPress={(e) => e.key === 'Enter' && handleSubmit(e)}
             aria-label="Search"
             className="custom-input"
           />
