@@ -4,9 +4,6 @@ import Button from "react-bootstrap/Button";
 import Navbar from "react-bootstrap/Navbar";
 
 const BarraRicerca = ({ city, setCity, handleSearch }) => {
-  const img =
-    "https://cdn.icon-icons.com/icons2/2505/PNG/512/sunny_weather_icon_150663.png";
-
   const handleSubmit = (e) => {
     e.preventDefault();
     handleSearch();
@@ -22,7 +19,6 @@ const BarraRicerca = ({ city, setCity, handleSearch }) => {
         expand="lg"
         className="navbar rounded-3 justify-content-center bg-light"
       >
-        <img src={img} width="70" height="70" className="my-3" alt="Weather Icon" />
 
         <Form className="d-flex mx-3" onSubmit={handleSubmit}>
           <Form.Control
