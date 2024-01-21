@@ -12,12 +12,12 @@ const RisultatiMeteo = ({ city, weatherData }) => (
       <Card className="search text-center w-25 d-flex">
         <Card.Header className='bodyCard display-5 rounded-5'>{city.toUpperCase()}</Card.Header>
         <Card.Body>
-          <Card.Title className='display-4'>{weatherData.main.temp}°C</Card.Title>
-          <Card.Text className='medium-text'><WiThermometer />Temp max: {weatherData.main.temp_max}°C</Card.Text>
-          <Card.Text className='fw-normal'><WiThermometerExterior />Temp min: {weatherData.main.temp_min}°C</Card.Text>
-          <Card.Text className='small-text'><WiHumidity />Humidity: {weatherData.main.humidity}%</Card.Text>
-          <Card.Text className='small-text'><TiWeatherCloudy />Weather: {weatherData.weather[0].description}</Card.Text>
-          <Card.Text className='small-text'><BiWind />Wind: {weatherData.wind.speed}KM/h</Card.Text>
+          <Card.Title className='display-5'>{weatherData.main.temp}°C</Card.Title>
+          <Card.Text className='h6'><WiThermometer />Temp max: {weatherData.main.temp_max}°C</Card.Text>
+          <Card.Text className='h6'><WiThermometerExterior />Temp min: {weatherData.main.temp_min}°C</Card.Text>
+          <Card.Text className='h6'><WiHumidity />Humidity: {weatherData.main.humidity}%</Card.Text>
+          <Card.Text className='h6'><TiWeatherCloudy />Weather: {weatherData.weather[0].description}</Card.Text>
+          <Card.Text className='h6'><BiWind />Wind: {weatherData.wind.speed}KM/h</Card.Text>
         </Card.Body>
       </Card>
     )}
