@@ -57,12 +57,12 @@ function FetchWeather() {
 
     /* stiamo passando i dati prelevati dalla api per poi mandarli come prorps in ResultWeather e popolare la card in piu gestione searchBar con dati che devono arrivarci dall'untente e che restituisce dati API  */
     <>
-      <Container className="p-5 radius my-5 rounded-5 w-25">
-        <BarraRicerca
+      <Container-fluid >
+        <BarraRicerca className="jusitfy-content-center d-flex"
           city={city}
           handleSearch={handleSearch}
           setCity={setCity} />
-      </Container>
+      </Container-fluid>
 
       <Container className="d-flex justify-content-center">
         <RisultatiMeteo

@@ -20,10 +20,10 @@ const BarraRicerca = ({ city, setCity, handleSearch }) => {
     <>
       <Navbar
         expand="lg"
-        className="navbar rounded-3 justify-content-center bg-light"
+        className="navbar rounded-3 justify-content-center bg-light m-5"
       >
 
-        <Form className="d-flex p-2 mx-3" onSubmit={handleSubmit}>
+        <Form className="d-flex mx-3" onSubmit={handleSubmit}>
           <Form.Control
             type="text"
             placeholder="Inserisci il nome della città"
