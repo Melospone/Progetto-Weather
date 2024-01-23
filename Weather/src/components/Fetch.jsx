@@ -1,75 +1,84 @@
 import React, { useState } from "react";
+import { Container, Alert } from "react-bootstrap";
 import BarraRicerca from "./SearchBar";
 import RisultatiMeteo from "./ResultWeather";
-import { Container} from "react-bootstrap";
 
 function FetchWeather() {
-  /* tutti gli stati per gestire stato SearchBar, meteo, e mete0 giorni successivi */
-  const [city, setCity] = useState(""); /* stato iniziale con stringa vuota perche all'inizio dek render pagina non vogliamo vedere nessun dato caricato */
+  // Stati per gestire la città, i dati meteo e i dati dei giorni successivi
+  const [city, setCity] = useState("");
   const [weatherData, setWeatherData] = useState(null);
   const [day, setDay] = useState(null);
+  // Stato per gestire eventuali errori durante la ricerca
+  const [error, setError] = useState(null);
 
-
-
-  /* costante che richiama funzione per gestire la chiamata api, nella prima prendiamo i dati  */
-
-  /* prima fetch */
+  // Funzione per gestire la ricerca dei dati meteo
   const fetchSearch = async () => {
     try {
+      setError(null); // Azzera l'errore prima di fare la nuova ricerca
       const response = await fetch(
         `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=472fd5a8a4862dffcd7119a94ee5bc4a&units=metric`
       );
       const data = await response.json();
 
-      setWeatherData(data);
-
+      if (response.ok) {
+        setWeatherData(data);
+        fetchForecast(); // Avvia il recupero dei dati di previsione solo se la ricerca corrente ha avuto successo
+      } else {
+        setError("Città non trovata. Riprova con un altro nome.");
+      }
     } catch (error) {
-      console.error("Errore nel recupero dei dati ", error);
+      console.error("Errore nel recupero dei dati:", error);
+      setError("Errore nel recupero dei dati.");
     }
   };
 
-
-  /* seconda fetch */
+  // Funzione per gestire la ricerca dei dati di previsione
   const fetchForecast = async () => {
     try {
-      const response = await fetch(`https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=3f64327af1492cb6b843fb2420be96e9&lang=en&units=metric`);
+      const response = await fetch(
+        `https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=3f64327af1492cb6b843fb2420be96e9&lang=en&units=metric`
+      );
       const data = await response.json();
       setDay(data);
-
-      console.log(data);
     } catch (error) {
-      console.error("Error fetching forecast data:", error);
+      console.error("Errore nel recupero dei dati di previsione:", error);
     }
   };
 
-
-  /* funzione che richiama le 2 funzioni async per le Fetch */
+  // Funzione per gestire la ricerca quando l'utente preme il pulsante di ricerca
   const handleSearch = () => {
     if (city.length > 3) {
-
       fetchSearch();
-      fetchForecast();
     }
   };
 
-
   return (
-
-    /* stiamo passando i dati prelevati dalla api per poi mandarli come prorps in ResultWeather e popolare la card in piu gestione searchBar con dati che devono arrivarci dall'untente e che restituisce dati API  */
     <>
-      <Container-fluid >
-        <BarraRicerca className="jusitfy-content-center d-flex"
+      {/* Sezione per la barra di ricerca */}
+      <Container fluid>
+        <BarraRicerca
+          className="justify-content-center d-flex"
           city={city}
           handleSearch={handleSearch}
-          setCity={setCity} />
-      </Container-fluid>
+          setCity={setCity}
+        />
+      </Container>
 
+      {/* Sezione per visualizzare i risultati */}
       <Container className="d-flex justify-content-center">
-        <RisultatiMeteo
-          city={city}
-          weatherData={weatherData}
-          day={day} />
-
+        {error ? (
+          // Mostra l'Alert se c'è un errore
+          <Alert variant="danger">
+            {error}
+          </Alert>
+        ) : (
+          // Passa i dati alla componente RisultatiMeteo se non ci sono errori
+          <RisultatiMeteo
+            city={city}
+            weatherData={weatherData}
+            day={day}
+          />
+        )}
       </Container>
     </>
   );
