@@ -3,6 +3,9 @@ import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import Navbar from "react-bootstrap/Navbar";
 
+
+
+
 const BarraRicerca = ({ city, setCity, handleSearch }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
